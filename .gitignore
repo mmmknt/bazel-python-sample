@@ -1,0 +1,12 @@
+
+## bazel
+bazel-bin
+bazel-genfiles
+bazel-out
+bazel-testlogs
+bazel-bazel-python
+
+## IDE settings
+.idea
+
+**/__pycache__

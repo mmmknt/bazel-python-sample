@@ -1,0 +1,17 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@mysite_deps//:requirements.bzl", "requirement")
+load("@rules_python//python:defs.bzl", "py_library")
+
+py_library(
+    name = "py_default_library",
+    srcs = [
+        "__init__.py",
+        "settings.py",
+        "urls.py",
+        "wsgi.py",
+    ],
+    deps = [
+        requirement("Django"),
+    ],
+)

@@ -1,0 +1,9 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+
+py_binary(
+    name = "mysite",
+    srcs = ["manage.py"],
+    deps = ["//mysite/mysite:py_default_library"],
+    main = "manage.py",
+    python_version = "PY3",
+)
