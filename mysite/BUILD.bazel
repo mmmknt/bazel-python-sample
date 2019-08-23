@@ -1,9 +1,40 @@
 load("@rules_python//python:defs.bzl", "py_binary")
+load("@io_bazel_rules_docker//python3:image.bzl", "py3_image")
+load("@io_bazel_rules_docker//container:container.bzl", "container_bundle")
+load("@io_bazel_rules_docker//contrib:push-all.bzl", "docker_push")
 
 py_binary(
     name = "mysite",
     srcs = ["manage.py"],
-    deps = ["//mysite/mysite:py_default_library"],
+    deps = [
+        "//mysite/mysite:py_default_library",
+        "//mysite/polls:py_default_library",
+    ],
     main = "manage.py",
     python_version = "PY3",
+)
+
+py3_image(
+    name = "mysite_image",
+    srcs = ["manage.py"],
+    deps = [
+        "//mysite/mysite:py_default_library",
+        "//mysite/polls:py_default_library",
+    ],
+    main = "manage.py",
+    base = "@py3_base//image",
+)
+
+container_bundle(
+    name = "bundle",
+    images = {
+        ### replace your images
+        "registory/project/image:tag": ":mysite_image",
+    },
+)
+
+docker_push(
+    name = "push",
+    bundle = ":bundle",
+    visibility = ["//visibility:public"],
 )

@@ -1,0 +1,3 @@
+# Enable stamping workspace variables to binary.
+build --stamp
+

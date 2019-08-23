@@ -7,13 +7,15 @@ py_library(
     name = "py_default_library",
     srcs = [
         "__init__.py",
-        "settings.py",
+        "admin.py",
+        "apps.py",
+        "models.py",
+        "tests.py",
         "urls.py",
-        "wsgi.py",
+        "views.py",
     ],
     deps = [
+        "//mysite/polls/migrations:py_default_library",
         requirement("Django"),
-        requirement("pytz"),
-        requirement("sqlparse"),
     ],
 )
