@@ -7,13 +7,13 @@ https://docs.djangoproject.com/ja/2.2/intro/tutorial01/
 ### How to build
 
 ```
-bazel build //mysite:mysite 8080
+bazel build //mysite:mysite
 ```
 
 ### How to execute
 
 ```
-bazel-out/darwin-fastbuild/bin/mysite/mysite runserver
+bazel run //mysite:mysite runserver
 ```
 
 ### How to execute on image
